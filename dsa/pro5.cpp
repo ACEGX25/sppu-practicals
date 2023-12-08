@@ -31,10 +31,8 @@ int main()
     	cout<<"\n Operations on Queue ";
     	cout << "1. Enqueue()" << endl;
     	cout << "2. Dequeue()" << endl;
-   	cout << "3. isEmpty()" << endl;
-    	cout << "4. isFull()" << endl;
-    	cout << "5. count()" << endl;
-    	cout << "6. display()" << endl;
+    	cout << "3. isFull()" << endl;
+    	cout << "4. display()" << endl;
     	cout << "\n\nWhat operation do you want to perform? Select Option number. Enter 0 to exit." << endl;
     	cin >> option;
 
