@@ -21,6 +21,7 @@ class CircularQueue {
   	void enqueue(int val); 
   	int  dequeue();
   	void display(); 
+	bool isEmpty();
 };
 int main() 
 {
