@@ -16,13 +16,10 @@ class CircularQueue {
       		rear = -1;
       		for (int i = 0; i < 5; i++) 
         		arr[i] = 0;
-      	}
-    
-  	bool isEmpty();
+      	}  
   	bool isFull(); 
   	void enqueue(int val); 
-  	int  dequeue(); 
-  	int  count();
+  	int  dequeue();
   	void display(); 
 };
 int main() 
