@@ -6,13 +6,13 @@ using namespace std;
 void heapify(int arr[], int n, int i) {
     int temp;
     int smallest = i;
-    int left_child = 2 * i + 1;
-    int right_child = 2 * i + 2;
+    int l = 2 * i + 1;
+    int r = 2 * i + 2;
 
-    if (left_child < n && arr[left_child] < arr[smallest])
-        smallest = left_child;
-    if (right_child < n && arr[right_child] < arr[smallest])
-        smallest = right_child;
+    if (l < n && arr[l] < arr[smallest])
+        smallest = l;
+    if (r < n && arr[r] < arr[smallest])
+        smallest = r;
 
     if (smallest != i) {
         temp = arr[i];
