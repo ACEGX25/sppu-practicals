@@ -40,6 +40,7 @@ void heapSort(int arr[], int n) {
 }
 
 void printArray(int arr[], int n) {
+    int i;
     for (int i = 0; i < n; ++i)
         cout << arr[i] << " ";
     cout << "\n";
