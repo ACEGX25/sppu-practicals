@@ -9,16 +9,17 @@ struct Node
 class BST
 {
 	Node* root;
-	
+	Node*mirror;
 	public:
 		BST()
 		{root = NULL; }
 		Node* getroot()
 		{  return root; }  
 		void insert();
-		void search(int);
-		void display(Node *);
-		int height_tree(Node*);
+        Node* getmirror()
+		{  return mirror;}
+		void mirror_tree(Node*);
+        void display(Node *);
 };
 void BST::insert()
 {
@@ -67,6 +68,7 @@ void BST::insert()
         cin>>ch;
     }
 }
+
 void BST::display(Node *root)
 {
 	if(root == NULL)
@@ -78,57 +80,23 @@ void BST::display(Node *root)
 		display(root->right);
 	}
 }
-void BST::search(int no)
+
+void BST::mirror_tree(Node* t)
 {
-	Node *temp;
-	temp = root;
-	check:
-	if(no == temp->data)
+	Node* temp;
+	if(t!=NULL)
 	{
-		cout<<"\nData found!";
-		return;
+		temp = t->left;
+		t->left = t->right;
+		t->right = temp;
+
+		mirror_tree(t->left);
+		mirror_tree(t->right);
 	}
-	if(no < temp->data)
-	{
-		if(temp->left != NULL)
-		{
-			temp = temp->left;
-			goto check;
-		}
-		else
-		{
-			cout<<"\nData doesnt exist.";
-			return;
-		}
-	}
-	else if(no > temp->data)
-	{
-		if(temp->right != NULL)
-		{
-			temp = temp->right;
-			goto check;
-		}
-		else
-		{
-			cout<<"\nData doesnt exist.";
-			return;
-		}
-	}
-}
-int BST::height_tree(Node *t)
-{
-	int hlt, hrt;
-	if(t == NULL)
-		return 0;
 	else
-	{
-		hlt = height_tree(t->left) + 1;
-		hrt = height_tree(t->right) + 1;
-	}
-	if(hlt > hrt)
-		return hlt;
-	return hrt;
+		return;
 }
+
 int main()
 {
 	BST tree;
@@ -138,10 +106,9 @@ int main()
 	{
 		cout<<"\n\nBinary Search Tree Operations ";
 		cout<<"\n1. Insert.";
-		cout<<"\n2. Search.";
-		cout<<"\n3. Display.";
-		cout<<"\n4. Height of the tree.";
-		cout<<"\n5. Exit.";
+		cout<<"\n2. Display.";
+		cout<<"\n3. Mirror.";
+		cout<<"\n4. Exit.";
 		cout<<"\nEnter your choice: ";
 		cin>>choice;
 		switch(choice)
@@ -150,18 +117,16 @@ int main()
 				tree.insert();
 			break;
 			case 2: 
-				cout<<"\nEnter number to search: ";
-				cin>>x;
-				tree.search(x);
-				break;
-			case 3: 
 				cout<<"\nInorder traversal of tree: ";
 				tree.display(tree.getroot());
 				break;
-			case 4: 
-				cout<<"\nHeight of the tree: "<<tree.height_tree(tree.getroot());
+			case 3: 
+				cout<<"\nMirror Image of tree: ";
+				tree.mirror_tree(tree.getroot());
+				tree.display(tree.getroot());
+				tree.mirror_tree(tree.getroot());
 				break;
-			case 5: 
+			case 4: 
 				return 0;
 		}
 	}
